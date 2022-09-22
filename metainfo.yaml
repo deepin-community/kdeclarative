@@ -1,0 +1,21 @@
+maintainer: mart
+description: Provides integration of QML and KDE Frameworks
+tier: 3
+type: functional
+platforms:
+    - name: Linux
+    - name: FreeBSD
+    - name: Windows
+    - name: macOS
+      note: The supported remote Urls depends from what runtime kio slaves plugins are installed
+portingAid: false
+deprecated: false
+release: true
+libraries:
+ - qmake: KDeclarative
+   cmake: "KF5::Declarative"
+cmakename: KF5Declarative
+
+public_lib: true
+group: Frameworks
+subgroup: Tier 3
