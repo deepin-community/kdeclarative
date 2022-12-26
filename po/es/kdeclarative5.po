@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-06-03 00:14+0000\n"
-"PO-Revision-Date: 2021-04-28 16:14+0200\n"
+"POT-Creation-Date: 2021-12-18 00:40+0000\n"
+"PO-Revision-Date: 2021-12-18 20:37+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "First-Translator: Boris Wesslowski <Boris@Wesslowski.com>\n"
-"X-Generator: Lokalize 21.04.0\n"
+"X-Generator: Lokalize 21.12.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -52,19 +52,19 @@ msgctxt "@action:button"
 msgid "Show Contextual Help"
 msgstr "Mostrar ayuda de contexto"
 
-#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:76
+#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:75
 #, kde-format
 msgctxt "What the user inputs now will be taken as the new shortcut"
 msgid "Input"
 msgstr "Entrada"
 
-#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:78
+#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:77
 #, kde-format
 msgctxt "No shortcut defined"
 msgid "None"
 msgstr "Ninguna"
 
-#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:93
+#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:92
 #, kde-format
 msgid ""
 "Click on the button, then enter the shortcut like you would in the program.\n"
@@ -90,12 +90,36 @@ msgstr ""
 "global.\n"
 "Seleccione otra tecla."
 
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:171
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:142
+#, kde-format
+msgid "Global Shortcut Shadowing"
+msgstr "Ocultación de accesos rápidos globales"
+
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:145
+#, kde-format
+msgid "The '%1' key combination is shadowed by following global actions:\n"
+msgstr ""
+"La combinación de teclas «%1» está ocultada por las siguientes acciones "
+"globales:\n"
+
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:147
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:153
+#, kde-format
+msgid "Action '%1' in context '%2'\n"
+msgstr "Acción «%1» en el contexto «%2»\n"
+
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:151
+#, kde-format
+msgid "The '%1' key combination shadows following global actions:\n"
+msgstr ""
+"La combinación de teclas «%1» oculta a las siguientes acciones globales:\n"
+
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:190
 #, kde-format
 msgid "Conflict with Standard Application Shortcut"
 msgstr "Conflicto con el acceso rápido de la aplicación estándar"
 
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:173
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:192
 #, kde-format
 msgid ""
 "The '%1' key combination is also used for the standard action \"%2\" that "
@@ -106,17 +130,17 @@ msgstr ""
 "que es usada por algunas aplicaciones.\n"
 "¿Realmente quiere usarla también como acceso rápido global?"
 
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:179
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:198
 #, kde-format
 msgid "Reassign"
 msgstr "Reasignar"
 
-#: quickaddons/configmodule.cpp:164
+#: quickaddons/configmodule.cpp:187
 #, kde-format
 msgid "Invalid KPackage '%1'"
 msgstr "KPackage «%1» no válido"
 
-#: quickaddons/configmodule.cpp:170
+#: quickaddons/configmodule.cpp:193
 #, kde-format
 msgid "No QML file provided"
 msgstr "No se ha proporcionado ningún archivo QML"

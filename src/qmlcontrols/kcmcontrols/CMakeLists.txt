@@ -2,11 +2,15 @@ project(kcmcontrols)
 
 set(kcmcontrols_SRCS
     kcmcontrolsplugin.cpp
-    settingstateproxy.cpp
+    kcmcontrolsplugin.h
     settinghighlighterprivate.cpp
+    settinghighlighterprivate.h
+    settingshighlighterprivate.h
+    settingstateproxy.cpp
+    settingstateproxy.h
 )
 
-add_library(kcmcontrolsplugin SHARED ${kcmcontrols_SRCS})
+add_library(kcmcontrolsplugin ${kcmcontrols_SRCS})
 target_link_libraries(kcmcontrolsplugin
         Qt5::Core
         Qt5::Quick
@@ -16,6 +20,11 @@ target_link_libraries(kcmcontrolsplugin
         KF5::QuickAddons
         KF5::ConfigCore
 )
+
+if(WIN32 AND BUILD_SHARED_LIBS)
+    set_target_properties(kcmcontrolsplugin PROPERTIES PREFIX "")
+endif()
+
 
 install(TARGETS kcmcontrolsplugin DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/kcm)
 

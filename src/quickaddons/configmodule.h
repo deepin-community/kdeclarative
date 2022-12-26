@@ -16,12 +16,12 @@
 #include "quickaddons_export.h"
 
 #include <QObject>
+#include <QStringList>
 #include <QVariant>
 #include <QtQml>
 
 #include <KPluginMetaData>
 
-class QStringList;
 class KAboutData;
 class QQuickItem;
 class QQmlEngine;
@@ -152,22 +152,39 @@ public:
     Q_DECLARE_FLAGS(Buttons, Button)
     Q_FLAG(Buttons)
 
+#if QUICKADDONS_ENABLE_DEPRECATED_SINCE(5, 88)
     /**
      * Base class for all KControlModules.
      *
      * @note do not emit changed signals here, since they are not yet connected
      *       to any slot.
      * @param aboutData becomes owned by the ConfigModule
+     * @deprecated since 5.88, use ConfigModule(QObject*, KPluginMetaData, QVariantList)
      */
+    QUICKADDONS_DEPRECATED_VERSION(5, 88, "Use ConfigModule(QObject*, KPluginMetaData, QVariantList)")
     explicit ConfigModule(const KAboutData *aboutData, QObject *parent = nullptr, const QVariantList &args = QVariantList());
+#endif
 
+#if QUICKADDONS_ENABLE_DEPRECATED_SINCE(5, 88)
     /**
      * @note do not emit changed signals here, since they are not yet connected
      *       to any slot.
      * @param metaData description for the plugin: it will generate a KAboutData from that
      * @since 5.11
+     * @deprecated since 5.88, use ConfigModule(QObject*, KPluginMetaData, QVariantList)
      */
+    QUICKADDONS_DEPRECATED_VERSION(5, 88, "Use ConfigModule(QObject*, KPluginMetaData, QVariantList)")
     explicit ConfigModule(const KPluginMetaData &metaData, QObject *parent = nullptr, const QVariantList &args = QVariantList());
+#endif
+
+    /**
+     * Base class for all KControlModules.
+     *
+     * @note do not emit changed signals here, since they are not yet connected
+     *       to any slot.
+     * @since 5.88
+     */
+    explicit ConfigModule(QObject *parent, const KPluginMetaData &metaData, const QVariantList &args = QVariantList());
 
     /**
      * Base class for all KControlModules.
@@ -180,16 +197,20 @@ public:
     /**
      * Destroys the module.
      */
-    ~ConfigModule();
+    ~ConfigModule() override;
 
+#if QUICKADDONS_ENABLE_DEPRECATED_SINCE(5, 88)
     /**
      * This is generally only called for the KBugReport.
      * If you override you should  have it return a pointer to a constant.
      *
      *
      * @returns the KAboutData for this module
+     * @deprecated since 5.88. Use the KPluginMetaData the ConfigModule was instantiated from.
      */
+    QUICKADDONS_DEPRECATED_VERSION(5, 88, "Use the KPluginMetaData the ConfigModule was instantiated from")
     const KAboutData *aboutData() const;
+#endif
 
     /**
      * This sets the KAboutData returned by aboutData()
@@ -490,10 +511,18 @@ public Q_SLOTS:
     void push(QQuickItem *item);
 
     /**
-     * pop the last page of the KCM hierarchy
+     * pop the last page of the KCM hierarchy, the page is destroyed
      * @since 5.50
      */
     void pop();
+
+    /**
+     * remove and return the last page of the KCM hierarchy:
+     * the popped page won't be deleted, it's the caller's responsibility to manage the lifetime of the returned item
+     * @returns the last page if any, nullptr otherwise
+     * @since 5.89
+     */
+    QQuickItem *takeLast();
 
     /**
      * Ask the shell to show a passive notification

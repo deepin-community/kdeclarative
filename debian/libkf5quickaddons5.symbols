@@ -41,10 +41,13 @@ libKF5QuickAddons.so.5 libkf5quickaddons5 #MINVER#
  _ZN12KQuickAddons12ConfigModule4saveEv@Base 5.8.0+git20150324.0130+15.04
  _ZN12KQuickAddons12ConfigModule6mainUiEv@Base 5.8.0+git20150324.0130+15.04
  _ZN12KQuickAddons12ConfigModule8defaultsEv@Base 5.8.0+git20150324.0130+15.04
+ _ZN12KQuickAddons12ConfigModule8takeLastEv@Base 5.90.0
  _ZN12KQuickAddons12ConfigModule9needsSaveEv@Base 5.8.0+git20150324.0130+15.04
+ _ZN12KQuickAddons12ConfigModuleC1EP7QObjectRK15KPluginMetaDataRK5QListI8QVariantE@Base 5.90.0
  _ZN12KQuickAddons12ConfigModuleC1EP7QObjectRK5QListI8QVariantE@Base 5.8.0+git20150324.0130+15.04
  _ZN12KQuickAddons12ConfigModuleC1EPK10KAboutDataP7QObjectRK5QListI8QVariantE@Base 5.8.0+git20150324.0130+15.04
  _ZN12KQuickAddons12ConfigModuleC1ERK15KPluginMetaDataP7QObjectRK5QListI8QVariantE@Base 5.11.0
+ _ZN12KQuickAddons12ConfigModuleC2EP7QObjectRK15KPluginMetaDataRK5QListI8QVariantE@Base 5.90.0
  _ZN12KQuickAddons12ConfigModuleC2EP7QObjectRK5QListI8QVariantE@Base 5.8.0+git20150324.0130+15.04
  _ZN12KQuickAddons12ConfigModuleC2EPK10KAboutDataP7QObjectRK5QListI8QVariantE@Base 5.8.0+git20150324.0130+15.04
  _ZN12KQuickAddons12ConfigModuleC2ERK15KPluginMetaDataP7QObjectRK5QListI8QVariantE@Base 5.11.0
@@ -60,9 +63,11 @@ libKF5QuickAddons.so.5 libkf5quickaddons5 #MINVER#
  _ZN12KQuickAddons19ManagedConfigModule4loadEv@Base 5.69.0
  _ZN12KQuickAddons19ManagedConfigModule4saveEv@Base 5.69.0
  _ZN12KQuickAddons19ManagedConfigModule8defaultsEv@Base 5.69.0
+ _ZN12KQuickAddons19ManagedConfigModuleC1EP7QObjectRK15KPluginMetaDataRK5QListI8QVariantE@Base 5.90.0
  _ZN12KQuickAddons19ManagedConfigModuleC1EP7QObjectRK5QListI8QVariantE@Base 5.69.0
  _ZN12KQuickAddons19ManagedConfigModuleC1EPK10KAboutDataP7QObjectRK5QListI8QVariantE@Base 5.69.0
  _ZN12KQuickAddons19ManagedConfigModuleC1ERK15KPluginMetaDataP7QObjectRK5QListI8QVariantE@Base 5.69.0
+ _ZN12KQuickAddons19ManagedConfigModuleC2EP7QObjectRK15KPluginMetaDataRK5QListI8QVariantE@Base 5.90.0
  _ZN12KQuickAddons19ManagedConfigModuleC2EP7QObjectRK5QListI8QVariantE@Base 5.69.0
  _ZN12KQuickAddons19ManagedConfigModuleC2EPK10KAboutDataP7QObjectRK5QListI8QVariantE@Base 5.69.0
  _ZN12KQuickAddons19ManagedConfigModuleC2ERK15KPluginMetaDataP7QObjectRK5QListI8QVariantE@Base 5.69.0

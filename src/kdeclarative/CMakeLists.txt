@@ -1,13 +1,20 @@
 
 set(kdeclarative_SRCS
-  configpropertymap.cpp
-  qmlobject.cpp
-  qmlobjectsharedengine.cpp
-  kdeclarative.cpp
-  private/kiconprovider.cpp
+    configpropertymap.cpp
+    configpropertymap.h
+    kdeclarative.cpp
+    kdeclarative.h
+    private/kdeclarative_p.h
+    private/kiconprovider.cpp
+    private/kiconprovider_p.h
+    qmlobject.cpp
+    qmlobject.h
+    qmlobjectsharedengine.cpp
+    qmlobjectsharedengine.h
+
 )
 if(NOT ANDROID)
-    list(APPEND kdeclarative_SRCS private/kioaccessmanagerfactory.cpp)
+    list(APPEND kdeclarative_SRCS private/kioaccessmanagerfactory.cpp private/kioaccessmanagerfactory_p.h)
 endif()
 
 add_library(KF5Declarative ${kdeclarative_SRCS})
@@ -33,7 +40,7 @@ target_link_libraries(KF5Declarative
   PRIVATE
     Qt5::Quick  #QQuickImageProvider
     KF5::I18n       #i18n bindings
-    KF5::KIOWidgets     #KIO::AccessManager
+    KF5::KIOWidgets     #KIO::Integration::AccessManager
     KF5::IconThemes #KIconProvider
 )
 set(KDeclarative_BUILD_INCLUDE_DIRS ${KDeclarative_BINARY_DIR} ${CMAKE_CURRENT_BINARY_DIR})

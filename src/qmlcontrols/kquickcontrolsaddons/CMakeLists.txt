@@ -3,21 +3,34 @@ project(kquickcontrolsaddons)
 configure_file(config-kquickcontrolsaddons.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-kquickcontrolsaddons.h)
 
 set(kquickcontrolsaddons_SRCS
-    kquickcontrolsaddonsplugin.cpp
-    qpixmapitem.cpp
-    qimageitem.cpp
-    qiconitem.cpp
-    fallbacktaphandler.cpp
-    mouseeventlistener.cpp
-    columnproxymodel.cpp
     clipboard.cpp
+    clipboard.h
+    columnproxymodel.cpp
+    columnproxymodel.h
     eventgenerator.cpp
-    mimedatabase.cpp
-    kcmshell.cpp
+    eventgenerator.h
+    fallbacktaphandler.cpp
+    fallbacktaphandler.h
     icondialog.cpp
+    icondialog.h
+    kcmshell.cpp
+    kcmshell.h
+    kquickcontrolsaddonsplugin.cpp
+    kquickcontrolsaddonsplugin.h
+    mimedatabase.cpp
+    mimedatabase.h
+    mouseeventlistener.cpp
+    mouseeventlistener.h
+    qiconitem.cpp
+    qiconitem.h
+    qimageitem.cpp
+    qimageitem.h
+    qpixmapitem.cpp
+    qpixmapitem.h
+
 )
 
-add_library(kquickcontrolsaddonsplugin SHARED ${kquickcontrolsaddons_SRCS})
+add_library(kquickcontrolsaddonsplugin ${kquickcontrolsaddons_SRCS})
 
 target_link_libraries(kquickcontrolsaddonsplugin
         Qt5::Core
@@ -30,8 +43,12 @@ target_link_libraries(kquickcontrolsaddonsplugin
         KF5::ConfigCore)
 
 if (HAVE_EPOXY)
-    target_sources(kquickcontrolsaddonsplugin PRIVATE plotter.cpp)
+    target_sources(kquickcontrolsaddonsplugin PRIVATE plotter.cpp plotter.h)
     target_link_libraries(kquickcontrolsaddonsplugin epoxy::epoxy)
+endif()
+
+if(WIN32 AND BUILD_SHARED_LIBS)
+    set_target_properties(kquickcontrolsaddonsplugin PROPERTIES PREFIX "")
 endif()
 
 install(TARGETS kquickcontrolsaddonsplugin DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/kquickcontrolsaddons)

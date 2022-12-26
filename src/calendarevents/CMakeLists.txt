@@ -1,9 +1,10 @@
 set(calendar-integration_SRCS
     calendareventsplugin.cpp
+    calendareventsplugin.h
     eventdata_p.cpp
 )
 
-add_library(KF5CalendarEvents SHARED ${calendar-integration_SRCS})
+add_library(KF5CalendarEvents ${calendar-integration_SRCS})
 generate_export_header(KF5CalendarEvents BASE_NAME CalendarEvents)
 add_library(KF5::CalendarEvents ALIAS KF5CalendarEvents)
 

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-06-03 00:14+0000\n"
+"POT-Creation-Date: 2021-12-18 00:40+0000\n"
 "PO-Revision-Date: 2012-06-27 10:04+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -45,19 +45,19 @@ msgctxt "@action:button"
 msgid "Show Contextual Help"
 msgstr ""
 
-#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:76
+#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:75
 #, kde-format
 msgctxt "What the user inputs now will be taken as the new shortcut"
 msgid "Input"
 msgstr "បញ្ចូល"
 
-#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:78
+#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:77
 #, kde-format
 msgctxt "No shortcut defined"
 msgid "None"
 msgstr "គ្មាន"
 
-#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:93
+#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:92
 #, fuzzy, kde-format
 #| msgid ""
 #| "Click on the button, then enter the shortcut like you would in the "
@@ -85,12 +85,41 @@ msgstr ""
 "គ្រាប់​ចុច F12 ត្រូវ​បាន​បម្រុង​ទុក​នៅ​លើ​វីនដូ ដូច្នេះ​មិនអាច​ត្រូវ​បានប្រើ​សម្រាប់​គ្រាប់​ចុច​ផ្លូវកាត់​សកល​ទេ ។\n"
 "សូម​ជ្រើស​គ្រាប់ចុច​ផ្លូវកាត់​ផ្សេង ។"
 
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:171
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:142
+#, kde-format
+msgid "Global Shortcut Shadowing"
+msgstr ""
+
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:145
+#, fuzzy, kde-format
+#| msgid ""
+#| "The '%1' key combination is registered by application %2 for action %3:"
+msgid "The '%1' key combination is shadowed by following global actions:\n"
+msgstr "បន្សំ​គ្រាប់ចុច '%1' ត្រូវ​បាន​ចុះឈ្មោះ​ដោយ​កម្មវិធី %2 សម្រាប់​សកម្មភាព %3 ៖"
+
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:147
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:153
+#, fuzzy, kde-format
+#| msgid "In context '%1' for action '%2'\n"
+msgid "Action '%1' in context '%2'\n"
+msgstr "នៅ​ក្នុង​បិរបទ '%1' សម្រាប់​សកម្មភាព '%2'\n"
+
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:151
+#, fuzzy, kde-format
+#| msgid ""
+#| "The '%1' key combination is registered by application %2.\n"
+#| "%3"
+msgid "The '%1' key combination shadows following global actions:\n"
+msgstr ""
+"បន្សំ​គ្រាប់ចុច '%1' ត្រូវ​បាន​ចុះឈ្មោះ​ដោយ​កម្មវិធី %2 ។\n"
+"%3"
+
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:190
 #, kde-format
 msgid "Conflict with Standard Application Shortcut"
 msgstr "ប៉ះទង្គិច​ជាមួយ​នឹង​ផ្លូវកាត់​កម្មវិធី​ស្តង់ដា"
 
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:173
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:192
 #, kde-format
 msgid ""
 "The '%1' key combination is also used for the standard action \"%2\" that "
@@ -100,18 +129,18 @@ msgstr ""
 "បន្សំ​គ្រាប់​ចុច '%1' ក៏​ត្រូវ​កំពុង​ត្រូវ​បាន​ប្រើ​សម្រាប់​សកម្មភាព​ស្តង់ដារ \"%2\" ដែល​កម្មវិធី​មួយ​ចំនួន​ប្រើ ។\n"
 "តើ​អ្នក​ពិត​ជា​ចង់​ប្រើ​វា​ជា​ផ្លូវកាត់​សកល​ដែរ​ឬ ?"
 
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:179
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:198
 #, kde-format
 msgid "Reassign"
 msgstr "ផ្ដល់ឡើង​វិញ"
 
-#: quickaddons/configmodule.cpp:164
+#: quickaddons/configmodule.cpp:187
 #, fuzzy, kde-format
 #| msgid "Invalid item."
 msgid "Invalid KPackage '%1'"
 msgstr "ធាតុ​មិន​ត្រឹមត្រូវ ។"
 
-#: quickaddons/configmodule.cpp:170
+#: quickaddons/configmodule.cpp:193
 #, kde-format
 msgid "No QML file provided"
 msgstr ""

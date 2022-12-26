@@ -36,7 +36,6 @@ public:
         : _q(module)
         , _qmlObject(nullptr)
         , _buttons(ConfigModule::Help | ConfigModule::Default | ConfigModule::Apply)
-        , _about(nullptr)
         , _useRootOnlyMessage(false)
         , _needsAuthorization(false)
         , _needsSave(false)
@@ -46,11 +45,13 @@ public:
     }
 
     void authStatusChanged(int status);
+    QString componentName() const;
 
     ConfigModule *_q;
     KDeclarative::QmlObject *_qmlObject;
     ConfigModule::Buttons _buttons;
-    const KAboutData *_about;
+    std::unique_ptr<const KAboutData> _about;
+    KPluginMetaData _metaData;
     QString _rootOnlyMessage;
     QString _quickHelp;
     QString _errorString;
@@ -70,13 +71,25 @@ public:
 
 QHash<QObject *, ConfigModule *> ConfigModulePrivate::s_rootObjects = QHash<QObject *, ConfigModule *>();
 
+QString ConfigModulePrivate::componentName() const
+{
+    if (_about) {
+        return _about->componentName();
+    } else {
+        return _metaData.pluginId();
+    }
+}
+
+#if QUICKADDONS_BUILD_DEPRECATED_SINCE(5, 88)
 ConfigModule::ConfigModule(const KAboutData *aboutData, QObject *parent, const QVariantList &)
     : QObject(parent)
     , d(new ConfigModulePrivate(this))
 {
     setAboutData(aboutData);
 }
+#endif
 
+#if QUICKADDONS_BUILD_DEPRECATED_SINCE(5, 88)
 ConfigModule::ConfigModule(const KPluginMetaData &metaData, QObject *parent, const QVariantList &)
     : QObject(parent)
     , d(new ConfigModulePrivate(this))
@@ -90,11 +103,19 @@ ConfigModule::ConfigModule(const KPluginMetaData &metaData, QObject *parent, con
     }
     setAboutData(aboutData);
 }
+#endif
 
 ConfigModule::ConfigModule(QObject *parent, const QVariantList &)
     : QObject(parent)
     , d(new ConfigModulePrivate(this))
 {
+}
+
+ConfigModule::ConfigModule(QObject *parent, const KPluginMetaData &metaData, const QVariantList &)
+    : QObject(parent)
+    , d(new ConfigModulePrivate(this))
+{
+    d->_metaData = metaData;
 }
 
 ConfigModule::~ConfigModule()
@@ -105,7 +126,6 @@ ConfigModule::~ConfigModule()
     }
 
     delete d->_qmlObject;
-    delete d->_about;
     delete d;
 }
 
@@ -113,7 +133,7 @@ ConfigModule *ConfigModule::qmlAttachedProperties(QObject *object)
 {
     // at the moment of the attached object creation, the root item is the only one that hasn't a parent
     // only way to avoid creation of this attached for everybody but the root item
-    const QQmlEngine *engine = QtQml::qmlEngine(object);
+    const QQmlEngine *engine = qmlEngine(object);
     QQmlContext *cont = QQmlEngine::contextForObject(object);
 
     // Search the qml context that is the "root" for the sharedqmlobject, which
@@ -153,22 +173,25 @@ QQuickItem *ConfigModule::mainUi()
     }
 
     ConfigModulePrivate::s_rootObjects[d->_qmlObject->rootContext()] = this;
-    d->_qmlObject->setTranslationDomain(aboutData()->componentName());
+    d->_qmlObject->setTranslationDomain(d->componentName());
     d->_qmlObject->setInitializationDelayed(true);
 
     KPackage::Package package = KPackage::PackageLoader::self()->loadPackage(QStringLiteral("KPackage/GenericQML"));
     package.setDefaultPackageRoot(QStringLiteral("kpackage/kcms"));
-    package.setPath(aboutData()->componentName());
+    package.setPath(d->componentName());
+    if (d->_metaData.isValid() && !package.metadata().isValid()) {
+        package.setMetadata(d->_metaData);
+    }
 
     if (!package.isValid()) {
-        d->_errorString = i18n("Invalid KPackage '%1'", aboutData()->componentName());
-        qWarning() << "Error loading the module" << aboutData()->componentName() << ": invalid KPackage";
+        d->_errorString = i18n("Invalid KPackage '%1'", d->componentName());
+        qWarning() << "Error loading the module" << d->componentName() << ": invalid KPackage";
         return nullptr;
     }
 
     if (package.filePath("mainscript").isEmpty()) {
         d->_errorString = i18n("No QML file provided");
-        qWarning() << "Error loading the module" << aboutData()->componentName() << ": no QML file provided";
+        qWarning() << "Error loading the module" << d->componentName() << ": no QML file provided";
         return nullptr;
     }
 
@@ -195,7 +218,7 @@ void ConfigModule::push(const QString &fileName, const QVariantMap &propertyMap)
     // TODO: package as member
     KPackage::Package package = KPackage::PackageLoader::self()->loadPackage(QStringLiteral("KPackage/GenericQML"));
     package.setDefaultPackageRoot(QStringLiteral("kpackage/kcms"));
-    package.setPath(aboutData()->componentName());
+    package.setPath(d->componentName());
 
     QVariantHash propertyHash;
     for (auto it = propertyMap.begin(), end = propertyMap.end(); it != end; ++it) {
@@ -231,15 +254,21 @@ void ConfigModule::push(QQuickItem *item)
 
 void ConfigModule::pop()
 {
+    if (QQuickItem *page = takeLast()) {
+        page->deleteLater();
+    }
+}
+
+QQuickItem *ConfigModule::takeLast()
+{
     if (d->subPages.isEmpty()) {
-        return;
+        return nullptr;
     }
     QQuickItem *page = d->subPages.takeLast();
     Q_EMIT pageRemoved();
     Q_EMIT depthChanged(depth());
-    page->deleteLater();
-
     setCurrentIndex(qMin(d->currentIndex, depth() - 1));
+    return page;
 }
 
 void ConfigModule::showPassiveNotification(const QString &message, const QVariant &timeout, const QString &actionText, const QJSValue &callBack)
@@ -269,8 +298,8 @@ void ConfigModule::setNeedsAuthorization(bool needsAuth)
     }
 
     d->_needsAuthorization = needsAuth;
-    if (needsAuth && d->_about) {
-        d->_authActionName = QLatin1String("org.kde.kcontrol.") + d->_about->componentName() + QLatin1String(".save");
+    if (needsAuth) {
+        d->_authActionName = QLatin1String("org.kde.kcontrol.") + d->componentName() + QLatin1String(".save");
         d->_needsAuthorization = true;
 
     } else {
@@ -288,11 +317,17 @@ bool ConfigModule::needsAuthorization() const
 
 QString ConfigModule::name() const
 {
+    if (d->_metaData.isValid()) {
+        return d->_metaData.name();
+    }
     return d->_about->displayName();
 }
 
 QString ConfigModule::description() const
 {
+    if (d->_metaData.isValid()) {
+        return d->_metaData.description();
+    }
     return d->_about->shortDescription();
 }
 
@@ -383,17 +418,32 @@ void ConfigModule::defaults()
 {
 }
 
+#if QUICKADDONS_BUILD_DEPRECATED_SINCE(5, 88)
 const KAboutData *ConfigModule::aboutData() const
 {
-    return d->_about;
+    // If the ConfigModule was created from a KPluginMetaData lazily create a KAboutData from it
+    if (d->_metaData.isValid() && !d->_about) {
+        KAboutData *aboutData = new KAboutData(d->_metaData.pluginId(),
+                                               d->_metaData.name(),
+                                               d->_metaData.version(),
+                                               d->_metaData.description(),
+                                               KAboutLicense::byKeyword(d->_metaData.license()).key());
+
+        const auto authors = d->_metaData.authors();
+        for (auto &author : authors) {
+            aboutData->addAuthor(author.name(), author.task(), author.emailAddress(), author.webAddress(), author.ocsUsername());
+        }
+
+        d->_about.reset(aboutData);
+    }
+
+    return d->_about.get();
 }
+#endif
 
 void ConfigModule::setAboutData(const KAboutData *about)
 {
-    if (about != d->_about) {
-        delete d->_about;
-        d->_about = about;
-    }
+    d->_about.reset(about);
 }
 
 void ConfigModule::setRootOnlyMessage(const QString &message)

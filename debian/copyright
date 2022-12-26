@@ -6,30 +6,37 @@ Upstream-Contact: kde-frameworks-devel@kde.org
 Files: *
 Copyright: 2009, Alan Alpert <alan.alpert@nokia.com>
            2012-2014, Aleix Pol Gonzalez <aleixpol@blue-systems.com>
-           2014-2015, David Edmundson <davidedmundson@kde.org>
+           2021, Arjen Hiemstra <ahiemstra@heimr.nl>
+           2020, Cyril Rossi <cyril.rossi@enioka.com>
+           2009, Dario Freddi <drf@kde.org>
+           2014-2020, David Edmundson <davidedmundson@kde.org>
+           2021, David Redondo <kde@david-redondo.de>
+           2020, David Redondo <kde@david.redondo.de>
+           2015, Eike Hein <hein@kde.org>
+           2004, Frans Englich <frans.englich@telia.com>
            2014, Fredrik Höglund <fredrik@kde.org>
+           2015, Kai Uwe Broulik <kde@privat.broulik.de>
+           2019-2020, Kevin Ottens <kevin.ottens@enioka.com>
            2015, Luca Beltrame <lbeltrame@kde.org>
            2011, Marco Martin <mart@gmail.com>
-           2010-2015, Marco Martin <mart@kde.org>
-           2010-2013, Marco Martin <notmart@gmail.com>
+           2010-2020, Marco Martin <mart@kde.org>
+           2010-2015, Marco Martin <notmart@gmail.com>
+           2015, Martin Klapetek <mklapetek@kde.org>
+           1999, Matthias Hoelzer-Kluepfel <hoelzer@kde.org>
+           2001, Michael Goffioul <kdeprint@swing.be>
            2010, Ménard Alexis <menard@kde.org>
+           2020, Piotr Henryk Dabrowski <phd@phd.re>
            2013, Sebastian Kügler <sebas@kde.org>
-           2009, Adriaan de Groot, Mustapha Abubakar, Ibrahim Dasuna
-           2006, Canonical Ltd, and Rosetta Contributors 2006
-           1998, Erez Nir <erez-n@actcom.co.il>
-           2000-2008, Free Software Foundation, Inc
-           2008-2009, K Desktop Environment
-           2005, KDE Armenian translation team
-           2005, KDE Russian translation team
-           2000-2003, KDE e.v
-           2007, KDE i18n Project for Vietnamese
-           1999-2003, Meni Livne <livne@kde.org>
-           2007-2010, This_file_is_part_of_KDE
-           2001, translate.org.za
 License: LGPL-2+
 
-Files: src/kdeclarative/private/kiconprovider.cpp
+Files: autotests/columnproxymodeltest.cpp
+       autotests/columnproxymodeltest.h
+       src/kdeclarative/private/kiconprovider.cpp
        src/kdeclarative/private/kiconprovider_p.h
+       src/qmlcontrols/kconfig/kauthorizedproxy.cpp
+       src/qmlcontrols/kconfig/kauthorizedproxy.h
+       src/qmlcontrols/kconfig/kconfigplugin.cpp
+       src/qmlcontrols/kconfig/kconfigplugin.h
        src/qmlcontrols/kioplugin/kioplugin.cpp
        src/qmlcontrols/kioplugin/kioplugin.h
        src/qmlcontrols/kioplugin/krunproxy.cpp
@@ -48,9 +55,10 @@ Copyright: 2012, Aleix Pol Gonzalez <aleixpol@blue-systems.com>
            2014, Antonis Tsiapaliokas <antonis.tsiapaliokas@kde.org>
            2011, Artur Duque de Souza <asouza@kde.org>
            2014, David Edmundson <davidedmundson@kde.org>
+           2020, David Redondo <davidedmundson@kde.org>
+           2020, David Redondo <kde@david-redondo.de>
            2001, Ellis Whitehead <ellis@kde.org>
-           1991-1999, Free Software Foundation, Inc
-           2015, Kai Uwe Broulik <kde@privat.broulik.de>
+           2015-2016, Kai Uwe Broulik <kde@privat.broulik.de>
            2014, Kevin Ottens <ervin@kde.org>
            1998, Mark Donohoe <donohoe@kde.org>
 License: LGPL-2.1+
@@ -69,74 +77,55 @@ Files: src/qmlcontrols/draganddrop/DeclarativeDragArea.cpp
        src/qmlcontrols/draganddrop/draganddropplugin.h
 Copyright: 2015, Aleix Pol Gonzalez <aleixpol@kde.org>
            2010, BetterInbox <contact@betterinbox.com>
-           2011, Marco Martin <mart@kde.org>
+           2011-2017, Marco Martin <mart@kde.org>
            2013, Sebastian Kügler <sebas@kde.org>
 License: Expat
 
-Files: po/ca/kdeclarative5.po
-       po/ca@valencia/kdeclarative5.po
-       po/uk/kdeclarative5.po
-       src/qmlcontrols/kcoreaddons/kuserproxy.cpp
+Files: src/qmlcontrols/kcoreaddons/kuserproxy.cpp
        src/qmlcontrols/kcoreaddons/kuserproxy.h
 Copyright: 2013, Marco Martin <mart@kde.org>
            2014, Sebastian Kügler <sebas@kde.org>
-           2014-2015, This_file_is_part_of_KDE
 License: LGPL-2.1+3+KDEeV
 
-Files: src/qmlcontrols/kquickcontrolsaddons/qiconitem.h
-       src/qmlcontrols/kquickcontrolsaddons/qimageitem.h
-       src/qmlcontrols/kquickcontrolsaddons/qpixmapitem.h
-Copyright: 1989-1991, Free Software Foundation, Inc
-           2015, Luca Beltrame <lbeltrame@kde.org>
-           2011, Marco Martin <mart@kde.org>
+Files: src/qmlcontrols/kquickcontrolsaddons/fallbacktaphandler.cpp
+       src/qmlcontrols/kquickcontrolsaddons/fallbacktaphandler.h
+       src/qmlcontrols/kquickcontrolsaddons/icondialog.cpp
+       src/qmlcontrols/kquickcontrolsaddons/icondialog.h
+Copyright: 2014-2015, Eike Hein <hein@kde.org>
+           2015, Kai Uwe Broulik <kde@privat.broulik.de>
+           2019, Marco Martin <mart@kde.org>
 License: GPL-2+
 
 Files: src/qmlcontrols/kcoreaddons/formats.cpp
        src/qmlcontrols/kcoreaddons/formats.h
        src/qmlcontrols/kcoreaddons/kcoreaddonsplugin.cpp
        src/qmlcontrols/kcoreaddons/kcoreaddonsplugin.h
+       src/qmlcontrols/kquickcontrols/ColorButton.qml
 Copyright: 2014, Bhushan Shah <bhush94@gmail.com>
-           2014, David Edmundson <davidedmundson@kde.org>
+           2014-2015, David Edmundson <davidedmundson@kde.org>
 License: GPL-2+3+KDEeV
 
-Files: po/bg/kdeclarative5.po
-       tests/helloworld/metadata.desktop
+Files: tests/helloworld/metadata.desktop
        tests/helloworldnowindow/metadata.desktop
-Copyright: 2009-2013, Yasen Pramatarov <yasen@lindeas.com>
-           2006-2009, Zlatko Popov <zlatkopopov@fsa-bg.org>
-License: GPL
+Copyright: 2014, Marco Martin <mart@kde.org>
+License: LGPL-2+
 
-Files: cmake/Findepoxy.cmake
-Copyright: 2014, Fredrik Höglund <fredrik@kde.org>
-License: BSD-3-clause
+Files: .gitlab-ci.yml
+Copyright: 2020, Volker Krause <vkrause@kde.org>
+License: CC0-1.0
+ On Debian systems, the full text of the Creative Commons CC0 1.0
+ Universal license can be found in the file
+ `/usr/share/common-licenses/CC0-1.0’.
+
+Files: autotests/quickviewsharedengine.cpp
+       autotests/util.cpp
+       autotests/util.h
+Copyright: 2014, Digia Plc and/or its subsidiary<-ies> <http://www.qt-project.org/legal>
+License: LGPL-2.1+3-Qt-LGPL-exception-1.1+LicenseRef-Qt-Commercial
 
 Files: debian/*
 Copyright: 2014, Scarlett Clark <scarlett@scarlettgatelyclark.com>
 License: LGPL-2.1+
-
-License: BSD-3-clause
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions
- are met:
- .
- 1. Redistributions of source code must retain the copyright
-    notice, this list of conditions and the following disclaimer.
- 2. Redistributions in binary form must reproduce the copyright
-    notice, this list of conditions and the following disclaimer in the
-    documentation and/or other materials provided with the distribution.
- 3. The name of the author may not be used to endorse or promote products
-    derived from this software without specific prior written permission.
- .
- THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
- IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
- INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
- THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 License: Expat
  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -241,6 +230,67 @@ License: LGPL-2.1+
  .
  On Debian systems, the complete text of the GNU General Lesser
  Public License version 2.1 can be found in "/usr/share/common-licenses/LGPL-2.1".
+
+License: LGPL-2.1+3-Qt-LGPL-exception-1.1+LicenseRef-Qt-Commercial
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 2.1 of the License, or (at your option) version 3.
+ .
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+ .
+ You should have received a copy of the GNU Lesser General Public
+ License along with this library.  If not, see <http://www.gnu.org/licenses/>.
+ .
+ On Debian systems, the complete text of the GNU Lesser General Public License
+ version 2.1 can be found in "/usr/share/common-licenses/LGPL-2.1", likewise,
+ the complete text of the GNU Lesser General Public License version 3 can be
+ found in "/usr/share/common-licenses/LGPL-3".
+ --
+ The Qt Company Qt LGPL Exception version 1.1
+ .
+ As an additional permission to the GNU Lesser General Public License
+ version 2.1, the object code form of a "work that uses the Library"
+ may incorporate material from a header file that is part of the
+ Library. You may distribute such object code under terms of your
+ choice, provided that:
+ .
+ (i) the header files of the Library have not been modified; and
+ .  
+ (ii) the incorporated material is limited to numerical parameters,
+      data structure layouts, accessors, macros, inline functions and
+      templates; and
+ .
+ (iii) you comply with the terms of Section 6 of the GNU Lesser
+       General Public License version 2.1.
+ .
+ Moreover, you may apply this exception to a modified version of the
+ Library, provided that such modification does not involve copying
+ material from the Library into the modified Library's header files
+ unless such material is limited to
+ .
+ (i) numerical parameters;
+ .
+ (ii) data structure layouts; 
+ .
+ (iii) accessors; and
+ .
+ (iv) small macros, templates and inline functions of five lines or
+      less in length.
+ .
+ Furthermore, you are not required to apply this additional
+ permission to a modified version of the Library.
+ --
+ Commercial License Usage
+ Licensees holding valid commercial Qt licenses may use this file in
+ accordance with the commercial license agreement provided with the
+ Software or, alternatively, in accordance with the terms contained in
+ a written agreement between you and The Qt Company. For licensing terms
+ and conditions see https://www.qt.io/terms-conditions. For further
+ information use the contact form at https://www.qt.io/contact-us.
 
 License: LGPL-2.1+3+KDEeV
  This library is free software; you can redistribute it and/or
