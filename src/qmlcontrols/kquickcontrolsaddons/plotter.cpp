@@ -281,7 +281,7 @@ public:
     ~PlotSGNode() override = default;
 
 private:
-    QScopedPointer<QOpenGLShaderProgram> m_program;
+    std::unique_ptr<QOpenGLShaderProgram> m_program;
     int u_matrix;
     int u_color1;
     int u_color2;
@@ -290,7 +290,7 @@ private:
 };
 
 PlotSGNode::PlotSGNode()
-    : m_program(new QOpenGLShaderProgram)
+    : m_program(std::make_unique<QOpenGLShaderProgram>())
 {
     setOwnsTexture(true);
     m_program->addCacheableShaderFromSourceCode(QOpenGLShader::Vertex, vs_source);
@@ -515,13 +515,21 @@ void Plotter::dataSet_append(QQmlListProperty<PlotData> *list, PlotData *item)
     p->m_mutex.unlock();
 }
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 int Plotter::dataSet_count(QQmlListProperty<PlotData> *list)
+#else
+qsizetype Plotter::dataSet_count(QQmlListProperty<PlotData> *list)
+#endif
 {
     Plotter *p = static_cast<Plotter *>(list->object);
     return p->m_plotData.count();
 }
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 PlotData *Plotter::dataSet_at(QQmlListProperty<PlotData> *list, int index)
+#else
+PlotData *Plotter::dataSet_at(QQmlListProperty<PlotData> *list, qsizetype index)
+#endif
 {
     Plotter *p = static_cast<Plotter *>(list->object);
     p->m_mutex.lock();
@@ -837,9 +845,17 @@ QSGNode *Plotter::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeData *updateP
     return n;
 }
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 void Plotter::geometryChanged(const QRectF &newGeometry, const QRectF &oldGeometry)
+#else
+void Plotter::geometryChange(const QRectF &newGeometry, const QRectF &oldGeometry)
+#endif
 {
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QQuickItem::geometryChanged(newGeometry, oldGeometry);
+#else
+    QQuickItem::geometryChange(newGeometry, oldGeometry);
+#endif
     normalizeData();
 }
 

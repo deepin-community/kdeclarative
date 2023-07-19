@@ -1,5 +1,3 @@
-project(kioplugin)
-
 set(kioplugin_SRCS
     kioplugin.cpp
     kioplugin.h
@@ -9,8 +7,8 @@ set(kioplugin_SRCS
 
 add_library(kio ${kioplugin_SRCS})
 target_link_libraries(kio
-        Qt5::Core
-        Qt5::Qml
+        Qt${QT_MAJOR_VERSION}::Core
+        Qt${QT_MAJOR_VERSION}::Qml
         KF5::KIOWidgets
         KF5::Notifications
 )

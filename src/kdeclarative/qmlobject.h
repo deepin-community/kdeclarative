@@ -11,8 +11,11 @@
 
 #include <QQmlComponent>
 
-#include <KPackage/Package>
 #include <kdeclarative/kdeclarative_export.h>
+
+#if KDECLARATIVE_ENABLE_DEPRECATED_SINCE(5, 98)
+#include <KPackage/Package>
+#endif
 
 class QQmlEngine;
 class QQmlComponent;
@@ -58,8 +61,14 @@ public:
      *
      * @param engine a QQmlEngine we want to use
      * @param parent the parent of this object
+     *
+     * @deprecated Since 5.95, Use QmlObject(std::shared_ptr<QmlEngine>, QObject*)
+     * instead.
      */
+#if KDECLARATIVE_ENABLE_DEPRECATED_SINCE(5, 95)
+    KDECLARATIVE_DEPRECATED_VERSION(5, 95, "Use QmlObject(std::shared_ptr<QQmlEngine>, QmlContext*, QObject*) instead")
     explicit QmlObject(QQmlEngine *engine, QObject *parent = nullptr);
+#endif
 
     /**
      * Constructs a new QmlObject
@@ -67,8 +76,28 @@ public:
      * @param engine the QQmlEngine to use
      * @param rootContext the root context to use for object creation
      * @param parent the parent of this object
+     *
+     * @deprecated Since 5.95, Use QmlObject(std::shared_ptr<QmlEngine>, QmlContext*, QObject*)
+     * instead.
      */
+#if KDECLARATIVE_ENABLE_DEPRECATED_SINCE(5, 95)
+    KDECLARATIVE_DEPRECATED_VERSION(5, 95, "Use QmlObject(std::shared_ptr<QQmlEngine>, QQmlContext*, QObject*) instead")
     explicit QmlObject(QQmlEngine *engine, QQmlContext *rootContext, QObject *parent = nullptr);
+#endif
+
+    /**
+     * Construct a new QmlObject
+     *
+     * @param engine The QQmlEngine to use. If this object is the first user of
+     * the engine (e.g. use_count() is 1), KDeclarative::setupEngine() will be
+     * called. If this is nullptr, a new engine will be created for this object
+     * to use.
+     * @param rootContext The QML context to use for object creation. If this is
+     * nullptr, the engine's root context will be used.
+     * @param parent The QObject parent for this object.
+     */
+    explicit QmlObject(std::shared_ptr<QQmlEngine> engine, QQmlContext *rootContext = nullptr, QObject *parent = nullptr);
+
     ~QmlObject() override;
 
     /**
@@ -107,12 +136,15 @@ public:
      */
     QUrl source() const;
 
+#if KDECLARATIVE_ENABLE_DEPRECATED_SINCE(5, 98)
     /**
      * Load the package called packageName, then loads the
      * mainscript file for that package
      *
      * @param packageName the plugin name of the package
+     * @seprecated Since 5.98, use KPackage manually and set the source URL to the "mainscript" file path
      */
+    KDECLARATIVE_DEPRECATED_VERSION(5, 98, "use KPackage manually and set the source URL to the \"mainscript\" file path")
     void loadPackage(const QString &packageName);
 
     /**
@@ -121,13 +153,18 @@ public:
      *
      * @param package the package we want to use to provide QML
      *         files to this QML object
+     * @seprecated Since 5.98, use KPackage manually and set the source URL to the "mainscript" file path
      */
+    KDECLARATIVE_DEPRECATED_VERSION(5, 98, "use KPackage manually and set the source URL to the \"mainscript\" file path")
     void setPackage(const KPackage::Package &package);
 
     /**
      * @return the optional package, if any
+     * @seprecated Since 5.98, use KPackage manually and set the source URL to the "mainscript" file path
      */
+    KDECLARATIVE_DEPRECATED_VERSION(5, 98, "use KPackage manually and set the source URL to the \"mainscript\" file path")
     KPackage::Package package() const;
+#endif
 
     /**
      * Sets whether the execution of the QML file has to be delayed later in the event loop. It has to be called before setQmlPath().
@@ -230,8 +267,15 @@ protected:
      * multiple objects (such as QmlObjectSharedEngine)
      * @param parent the parent of this object
      * @since 5.45
+     *
+     * @deprecated Since 5.95, Use QmlObject(std::shared_ptr<QmlEngine>, QmlContext*, QObject*)
+     * instead. The "obj" parameter has been dropped, instead setupEngine will be
+     * called if this QmlObject is the first user of the engine.
      */
+#if KDECLARATIVE_ENABLE_DEPRECATED_SINCE(5, 95)
+    KDECLARATIVE_DEPRECATED_VERSION(5, 95, "Use QmlObject(std::shared_ptr<QQmlEngine>, QQmlContext*, QObject*) instead")
     explicit QmlObject(QQmlEngine *engine, QQmlContext *rootContext, QmlObject *obj, QObject *parent = nullptr);
+#endif
 
 private:
     friend class QmlObjectPrivate;

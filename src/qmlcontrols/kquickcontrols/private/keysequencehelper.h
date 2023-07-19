@@ -43,15 +43,11 @@ public:
     ~KeySequenceHelper() override;
 
     Q_INVOKABLE bool isKeySequenceAvailable(const QKeySequence &keySequence) const;
-    // FIXME why can't qml call the inherited method?
-    Q_INVOKABLE void startRecording()
-    {
-        KeySequenceRecorder::startRecording();
-    }
 
     ShortcutTypes checkAgainstShortcutTypes();
     void setCheckAgainstShortcutTypes(ShortcutTypes types);
 
+    Q_INVOKABLE static QKeySequence fromString(const QString &str = QString());
     Q_INVOKABLE static bool keySequenceIsEmpty(const QKeySequence &keySequence);
     Q_INVOKABLE static QString keySequenceNativeText(const QKeySequence &keySequence);
     Q_INVOKABLE static QWindow *renderWindow(QQuickWindow *quickWindow);

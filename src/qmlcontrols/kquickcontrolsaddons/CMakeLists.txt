@@ -1,5 +1,3 @@
-project(kquickcontrolsaddons)
-
 configure_file(config-kquickcontrolsaddons.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-kquickcontrolsaddons.h)
 
 set(kquickcontrolsaddons_SRCS
@@ -33,10 +31,10 @@ set(kquickcontrolsaddons_SRCS
 add_library(kquickcontrolsaddonsplugin ${kquickcontrolsaddons_SRCS})
 
 target_link_libraries(kquickcontrolsaddonsplugin
-        Qt5::Core
-        Qt5::Quick
-        Qt5::Qml
-        Qt5::Gui
+        Qt${QT_MAJOR_VERSION}::Core
+        Qt${QT_MAJOR_VERSION}::Quick
+        Qt${QT_MAJOR_VERSION}::Qml
+        Qt${QT_MAJOR_VERSION}::Gui
         KF5::IconThemes
         KF5::KIOWidgets
         KF5::QuickAddons

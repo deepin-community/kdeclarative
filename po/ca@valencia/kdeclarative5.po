@@ -1,27 +1,27 @@
 # Translation of kdeclarative5.po to Catalan (Valencian)
-# Copyright (C) 1998-2021 This_file_is_part_of_KDE
+# Copyright (C) 1998-2022 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
 # Sebastià Pla i Sanz <sps@sastia.com>, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007.
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2003, 2006, 2011, 2012, 2013, 2014, 2020, 2021.
 # Albert Astals Cid <aacid@kde.org>, 2004, 2005, 2007.
-# Josep M. Ferrer <txemaq@gmail.com>, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2019, 2020.
+# Josep M. Ferrer <txemaq@gmail.com>, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2019, 2020, 2022.
 # Robert Millan <rmh@aybabtu.com>, 2009.
 # Orestes Mas <orestes@tsc.upc.edu>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeclarative\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-12-18 00:40+0000\n"
-"PO-Revision-Date: 2021-04-28 08:43+0200\n"
-"Last-Translator: Antoni Bella Pérez <antonibella5@yahoo.com>\n"
+"POT-Creation-Date: 2022-12-16 00:46+0000\n"
+"PO-Revision-Date: 2022-09-15 10:49+0200\n"
+"Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 20.12.3\n"
+"X-Generator: Lokalize 20.12.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 
@@ -38,7 +38,7 @@ msgstr "sps@sastia.com"
 #: kpackagelauncherqml/main.cpp:30
 #, kde-format
 msgid "KPackage QML application shell"
-msgstr "Intèrpret d'aplicació en QML del KPackage"
+msgstr "Intèrpret d'aplicació en QML de KPackage"
 
 #: kpackagelauncherqml/main.cpp:38
 #, kde-format
@@ -51,19 +51,43 @@ msgctxt "@action:button"
 msgid "Show Contextual Help"
 msgstr "Mostra l'ajuda contextual"
 
-#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:75
+#: qmlcontrols/kcmcontrols/qml/private/GridViewInternal.qml:79
+#, kde-format
+msgid "No items found"
+msgstr "No s'ha trobat cap element"
+
+#: qmlcontrols/kquickcontrols/ColorButton.qml:63
+#, kde-format
+msgctxt "@info:whatsthis for a button"
+msgid "Color button"
+msgstr "Botó del color"
+
+#: qmlcontrols/kquickcontrols/ColorButton.qml:65
+#, kde-format
+msgctxt "@info:whatsthis for a button of current color code %1"
+msgid "Current color is %1. This button will open a color chooser dialog."
+msgstr ""
+"El color actual és %1. Este botó obrirà un diàleg de selecció del color."
+
+#: qmlcontrols/kquickcontrols/ColorButton.qml:66
+#, kde-format
+msgctxt "@info:whatsthis for a button of current color code %1"
+msgid "Current color is %1."
+msgstr "El color actual és %1."
+
+#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:90
 #, kde-format
 msgctxt "What the user inputs now will be taken as the new shortcut"
 msgid "Input"
 msgstr "Entrada"
 
-#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:77
+#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:91
 #, kde-format
 msgctxt "No shortcut defined"
 msgid "None"
 msgstr "Cap"
 
-#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:92
+#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:102
 #, kde-format
 msgid ""
 "Click on the button, then enter the shortcut like you would in the program.\n"
@@ -74,49 +98,63 @@ msgstr ""
 "Exemple per a «Ctrl+a»: manteniu premuda la tecla «Ctrl» mentre premeu la "
 "«A»."
 
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:115
+#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:150
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Clear Key Sequence"
+msgstr "Neteja la seqüència de tecles"
+
+#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:166
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Cancel Key Sequence Recording"
+msgstr "Cancel·la la gravació de la seqüència de tecles"
+
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:118
 #, kde-format
 msgid "Reserved Shortcut"
 msgstr "Drecera reservada"
 
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:117
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:120
 #, kde-format
 msgid ""
 "The F12 key is reserved on Windows, so cannot be used for a global "
 "shortcut.\n"
 "Please choose another one."
 msgstr ""
-"La tecla «F12» està reservada a Windows, no es pot usar com a drecera "
+"La tecla «F12» està reservada a Windows, no es pot utilitzar com a drecera "
 "global.\n"
-"Per favor, seleccioneu-ne una altra."
+"Seleccioneu-ne una altra."
 
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:142
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:144
 #, kde-format
 msgid "Global Shortcut Shadowing"
-msgstr ""
+msgstr "Drecera global ombrejada"
 
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:145
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:147
 #, kde-format
 msgid "The '%1' key combination is shadowed by following global actions:\n"
 msgstr ""
+"La combinació de tecles «%1» està ombrejada per les accions globals "
+"següents:\n"
 
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:147
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:153
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:149
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:155
 #, kde-format
 msgid "Action '%1' in context '%2'\n"
-msgstr ""
+msgstr "Acció «%1» en el context «%2»\n"
 
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:151
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:153
 #, kde-format
 msgid "The '%1' key combination shadows following global actions:\n"
-msgstr ""
+msgstr "La combinació de tecles «%1» ombreja les accions globals següents:\n"
 
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:190
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:193
 #, kde-format
 msgid "Conflict with Standard Application Shortcut"
 msgstr "Conflicte amb una drecera estàndard d'aplicació"
 
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:192
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:195
 #, kde-format
 msgid ""
 "The '%1' key combination is also used for the standard action \"%2\" that "
@@ -124,20 +162,20 @@ msgid ""
 "Do you really want to use it as a global shortcut as well?"
 msgstr ""
 "La combinació de tecla «%1» ja s'ha assignat a l'acció estàndard «%2» que "
-"usen algunes aplicacions.\n"
-"Esteu segur que també voleu usar-la com a drecera global?"
+"utilitzen algunes aplicacions.\n"
+"Segur que també voleu utilitzar-la com a drecera global?"
 
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:198
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:201
 #, kde-format
 msgid "Reassign"
 msgstr "Reassigna"
 
-#: quickaddons/configmodule.cpp:187
+#: quickaddons/configmodule.cpp:189
 #, kde-format
 msgid "Invalid KPackage '%1'"
 msgstr "KPackage «%1» no vàlid"
 
-#: quickaddons/configmodule.cpp:193
+#: quickaddons/configmodule.cpp:195
 #, kde-format
 msgid "No QML file provided"
 msgstr "No s'ha proporcionat cap fitxer QML"

@@ -32,6 +32,7 @@ public:
         Tile, // the image is duplicated horizontally and vertically
         TileVertically, // the image is stretched horizontally and tiled vertically
         TileHorizontally, // the image is stretched vertically and tiled horizontally
+        Pad, /**< the image is not transformed @since 5.96 **/
     };
     Q_ENUM(FillMode)
 
@@ -68,7 +69,11 @@ Q_SIGNALS:
     void paintedHeightChanged();
 
 protected:
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     void geometryChanged(const QRectF &newGeometry, const QRectF &oldGeometry) override;
+#else
+    void geometryChange(const QRectF &newGeometry, const QRectF &oldGeometry) override;
+#endif
 
 private:
     QImage m_image;

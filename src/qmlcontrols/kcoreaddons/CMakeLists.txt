@@ -1,5 +1,3 @@
-project(kcoreaddons)
-
 set(kcoreaddonsplugin_SRCS
     formats.cpp
     formats.h
@@ -12,9 +10,9 @@ set(kcoreaddonsplugin_SRCS
 
 add_library(kcoreaddonsplugin ${kcoreaddonsplugin_SRCS})
 target_link_libraries(kcoreaddonsplugin
-        Qt5::Core
-        Qt5::Quick
-        Qt5::Qml
+        Qt${QT_MAJOR_VERSION}::Core
+        Qt${QT_MAJOR_VERSION}::Quick
+        Qt${QT_MAJOR_VERSION}::Qml
         KF5::CoreAddons
 )
 

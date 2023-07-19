@@ -1,21 +1,18 @@
-project(kcmcontrols)
-
 set(kcmcontrols_SRCS
     kcmcontrolsplugin.cpp
     kcmcontrolsplugin.h
     settinghighlighterprivate.cpp
     settinghighlighterprivate.h
-    settingshighlighterprivate.h
     settingstateproxy.cpp
     settingstateproxy.h
 )
 
 add_library(kcmcontrolsplugin ${kcmcontrols_SRCS})
 target_link_libraries(kcmcontrolsplugin
-        Qt5::Core
-        Qt5::Quick
-        Qt5::Qml
-        Qt5::Gui
+        Qt${QT_MAJOR_VERSION}::Core
+        Qt${QT_MAJOR_VERSION}::Quick
+        Qt${QT_MAJOR_VERSION}::Qml
+        Qt${QT_MAJOR_VERSION}::Gui
         KF5::CoreAddons
         KF5::QuickAddons
         KF5::ConfigCore

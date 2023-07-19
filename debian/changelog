@@ -1,10 +1,133 @@
-kdeclarative (5.90.0-1deepin1) unstable; urgency=medium
+kdeclarative (5.103.0-1) unstable; urgency=medium
 
-  * Update symbols for RISC-V GCC 12
+  [ Aurélien COUDERC ]
+  * New upstream release (5.103.0).
+  * Update build-deps and deps with the info from cmake.
 
- -- Clansty <i@gao4.pw>  Thu, 12 Jan 2023 16:24:39 +0800
+ -- Aurélien COUDERC <coucouf@debian.org>  Sun, 12 Feb 2023 21:44:31 +0100
 
-kdeclarative (5.90.0-1) experimental; urgency=medium
+kdeclarative (5.102.0-1) unstable; urgency=medium
+
+  [ Aurélien COUDERC ]
+  * New upstream release (5.102.0).
+  * Update build-deps and deps with the info from cmake.
+  * Bump Standards-Version to 4.6.2, no change required.
+  * Update symbols from build for 5.102.0.
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Sun, 22 Jan 2023 21:35:10 +0100
+
+kdeclarative (5.101.0-1) unstable; urgency=medium
+
+  [ Aurélien COUDERC ]
+  * New upstream release (5.101.0).
+  * Update build-deps and deps with the info from cmake.
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Tue, 13 Dec 2022 07:40:35 +0100
+
+kdeclarative (5.100.0-1) unstable; urgency=medium
+
+  [ Aurélien COUDERC ]
+  * New upstream release (5.99.0).
+  * Update build-deps and deps with the info from cmake.
+  * New upstream release (5.100.0).
+  * Update build-deps and deps with the info from cmake.
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Sat, 19 Nov 2022 23:19:05 +0100
+
+kdeclarative (5.98.0-2) unstable; urgency=medium
+
+  * Team upload.
+  * Update symbols files from the logs of buildds.
+  * Modernize the building more:
+    - add the dh-sequence-pkgkde-symbolshelper build dependency to use the
+      pkgkde_symbolshelper automatically
+    - drop the manually specified pkgkde_symbolshelper addon for dh
+  * Tighten the inter-library dependencies.
+
+ -- Pino Toscano <pino@debian.org>  Wed, 21 Sep 2022 01:03:29 +0200
+
+kdeclarative (5.98.0-1) unstable; urgency=medium
+
+  [ Aurélien COUDERC ]
+  * New upstream release (5.98.0).
+  * Update build-deps and deps with the info from cmake.
+  * Update symbols from build for 5.98.0.
+  * Review copyright information.
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Sun, 18 Sep 2022 23:11:49 +0200
+
+kdeclarative (5.97.0-1) unstable; urgency=medium
+
+  [ Aurélien COUDERC ]
+  * New upstream release (5.97.0).
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Sun, 14 Aug 2022 18:55:40 +0200
+
+kdeclarative (5.96.0-3) unstable; urgency=medium
+
+  * Team upload.
+  * Update symbols files from the logs of buildds.
+
+ -- Pino Toscano <pino@debian.org>  Sat, 06 Aug 2022 15:03:41 +0200
+
+kdeclarative (5.96.0-2) unstable; urgency=medium
+
+  * Team upload.
+  * Update symbols files from the logs of buildds.
+
+ -- Pino Toscano <pino@debian.org>  Mon, 01 Aug 2022 14:36:00 +0200
+
+kdeclarative (5.96.0-1) unstable; urgency=medium
+
+  [ Aurélien COUDERC ]
+  * New upstream release (5.96.0).
+  * Update symbols from build for 5.96.0.
+  * Refresh lintian overrides.
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Sun, 31 Jul 2022 13:33:08 +0200
+
+kdeclarative (5.94.0-3) unstable; urgency=medium
+
+  * Team upload.
+  * Update symbols file from the logs of buildds.
+
+ -- Pino Toscano <pino@debian.org>  Tue, 26 Jul 2022 19:12:01 +0200
+
+kdeclarative (5.94.0-2) unstable; urgency=medium
+
+  * Team upload.
+  * Bump Standards-Version to 4.6.1, no changes required.
+  * Remove inactive Uploaders.
+  * Modernize building:
+    - add the dh-sequence-kf5 build dependency to use the kf5 addon
+      automatically
+    - drop all the manually specified addons and buildsystem for dh
+  * CI: enable again the blhc job.
+  * Fix field name case in debian/control (Multi-arch => Multi-Arch).
+  * Remove the manual check for nocheck in DEB_BUILD_OPTIONS, as debhelper does
+    it already in compat 13+.
+  * Mark the xauth, and xvfb build dependencies as nocheck, as they are needed
+    only by dh_auto_test.
+  * Update symbols files. (Closes: #1012959)
+
+ -- Pino Toscano <pino@debian.org>  Mon, 25 Jul 2022 19:51:51 +0200
+
+kdeclarative (5.94.0-1) unstable; urgency=medium
+
+  [ Aurélien COUDERC ]
+  * New upstream release (5.94.0).
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Thu, 19 May 2022 23:59:07 +0200
+
+kdeclarative (5.93.0-1) unstable; urgency=medium
+
+  [ Aurélien COUDERC ]
+  * New upstream release (5.93.0).
+  * Update the list of installed files from build logs.
+
+ -- Aurélien COUDERC <coucouf@debian.org>  Wed, 11 May 2022 23:22:48 +0200
+
+kdeclarative (5.90.0-1) unstable; urgency=medium
 
   [ Norbert Preining ]
   * New upstream release (5.89.0).

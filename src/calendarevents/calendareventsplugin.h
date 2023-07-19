@@ -7,6 +7,7 @@
 #ifndef CALENDAREVENTSPLUGIN_H
 #define CALENDAREVENTSPLUGIN_H
 
+#include <QCalendar>
 #include <QDateTime>
 #include <QMultiHash>
 #include <QObject>
@@ -169,6 +170,14 @@ class CALENDAREVENTS_EXPORT CalendarEventsPlugin : public QObject
     Q_OBJECT
 
 public:
+    enum class SubLabelPriority {
+        Low, /**< Usually used in alternate calendars */
+        Default, /**< For holidays or normal events */
+        High, /**< For flagged or marked events */
+        Urgent,
+    };
+    Q_ENUM(SubLabelPriority)
+
     explicit CalendarEventsPlugin(QObject *parent = nullptr);
     ~CalendarEventsPlugin() override;
 
@@ -181,6 +190,14 @@ public:
      * @param endDate the end of the range
      */
     virtual void loadEventsForDateRange(const QDate &startDate, const QDate &endDate) = 0;
+
+    struct SubLabel {
+        QString label; /**< The label will be displayed in the tooltip or beside the full date */
+        QString yearLabel; /**< The label will be displayed under the year number */
+        QString monthLabel; /**< The label will be displayed under the month number */
+        QString dayLabel; /**< The label will be displayed under the day number */
+        SubLabelPriority priority = SubLabelPriority::Default; /**< The display priority of the sublabel */
+    };
 
 Q_SIGNALS:
     /**
@@ -211,6 +228,34 @@ Q_SIGNALS:
      * @param uid The uid of the event that was removed
      */
     void eventRemoved(const QString &uid);
+
+    /**
+     * Emitted when the plugin has loaded the alternate dates
+     *
+     * @deprecated Since 5.102. Use @c alternateCalendarDateReady(const QHash<QDate, QCalendar::YearMonthDay> &data) instead
+     * @param data A hash containing a QDate key from Gregorian calendar
+     *             for the alternate date in the value, QDate.
+     * @since 5.95
+     */
+    CALENDAREVENTS_DEPRECATED void alternateDateReady(const QHash<QDate, QDate> &data);
+
+    /**
+     * Emitted when the plugin has loaded the alternate dates
+     *
+     * @param data A hash containing a QDate key from Gregorian calendar
+     *             for the alternate date in the value, QDate.
+     * @since 6.0
+     */
+    void alternateCalendarDateReady(const QHash<QDate, QCalendar::YearMonthDay> &data);
+
+    /**
+     * Emitted when the plugin has loaded the sublabels
+     *
+     * @param data A hash containing a QDate key for the sublabels
+     *             in the value, SubLabel.
+     * @since 5.95
+     */
+    void subLabelReady(const QHash<QDate, SubLabel> &data);
 };
 
 /**
