@@ -47,7 +47,22 @@ Kirigami.Page {
      */
     property bool framedView: true
 
-    title: kcm.name
+    /**
+     * extraFooterTopPadding: bool
+     * Whether to add extra top padding to an empty footer when framedView is
+     * false. Use the default value of true for KCMs in System Settings, because
+     * otherwise the Apply, Help, and Defaults buttons provided by System
+     * Settings won't have enough top padding and the button bar will look ugly.
+     * When using this component outside of System Settings where there is no
+     * such restriction, or in System Settings KCMs that don't show Apply, Help,
+     * or Defaults buttons, set it to false.
+     * Default: true
+     *
+     * @since 5.99
+     */
+    property bool extraFooterTopPadding: true
+
+    title: (typeof kcm !== "undefined") ? kcm.name : ""
 
     // Make pages fill the whole view by default
     Kirigami.ColumnView.fillWidth: true
@@ -92,12 +107,7 @@ Kirigami.Page {
         id: footerParent
         readonly property bool contentVisible: contentItem && contentItem.visible && contentItem.implicitHeight
 
-        // When the scrollview isn't drawing its own frame, we need to add
-        // extra padding on top when there is no footer content, or else the
-        // Apply, Help, and Defaults buttons provided by System Settings won't
-        // have enough top padding. This isn't a problem when the inner scrollview
-        // draws its own frame because its own outer margins provide this
-        height: contentVisible ? implicitHeight : (root.framedView ? 0 : root.margins)
+        height: contentVisible ? implicitHeight : (root.framedView ? 0 : (root.extraFooterTopPadding ? root.margins : 0))
         leftPadding: root.margins
         topPadding: root.margins
         rightPadding: root.margins
@@ -121,8 +131,8 @@ Kirigami.Page {
     }
 
     Component.onCompleted: {
-        if (footer && footer != footerParent) {
-            var f = footer
+        if (footer && footer !== footerParent) {
+            const f = footer
 
             footerParent.contentItem = f
             footer = footerParent
@@ -130,8 +140,12 @@ Kirigami.Page {
             f.parent = footerParent
         }
 
-        if (header && header != headerParent) {
-            var h = header
+        if (header && header !== headerParent) {
+            const h = header
+
+            // Revert the effect of repeated onHeaderChanged invocations
+            // during initialization in Page super-type.
+            h.anchors.top = undefined
 
             headerParent.contentItem = h
             header = headerParent
@@ -140,8 +154,8 @@ Kirigami.Page {
         }
 
         //Search overlaysheets in contentItem, parent to root if found
-        for (let i in contentItem.data) {
-            let child = contentItem.data[i];
+        for (const i in contentItem.data) {
+            const child = contentItem.data[i];
             if (child instanceof Kirigami.OverlaySheet) {
                 if (!child.parent) {
                     child.parent = root;

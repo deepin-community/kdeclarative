@@ -27,6 +27,8 @@
 #include <KPackage/Package>
 #include <KPackage/PackageLoader>
 
+#include <memory>
+
 namespace KQuickAddons
 {
 class ConfigModulePrivate
@@ -167,7 +169,7 @@ QQuickItem *ConfigModule::mainUi()
     QQmlContext *ctx = QQmlEngine::contextForObject(this);
 
     if (ctx && ctx->engine()) {
-        d->_qmlObject = new KDeclarative::QmlObject(ctx->engine(), ctx, this);
+        d->_qmlObject = new KDeclarative::QmlObject(std::shared_ptr<QQmlEngine>(ctx->engine()), ctx, this);
     } else {
         d->_qmlObject = new KDeclarative::QmlObjectSharedEngine(this);
     }
@@ -508,7 +510,11 @@ void ConfigModule::setNeedsSave(bool needs)
     Q_EMIT needsSaveChanged();
 }
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+bool ConfigModule::needsSave() const
+#else
 bool ConfigModule::needsSave()
+#endif
 {
     return d->_needsSave;
 }
@@ -523,7 +529,11 @@ void ConfigModule::setRepresentsDefaults(bool defaults)
     Q_EMIT representsDefaultsChanged();
 }
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+bool ConfigModule::representsDefaults() const
+#else
 bool ConfigModule::representsDefaults()
+#endif
 {
     return d->_representsDefaults;
 }

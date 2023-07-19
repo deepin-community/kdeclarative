@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.16)
 
-set(KF_VERSION "5.90.0") # handled by release scripts
-set(KF_DEP_VERSION "5.90.0") # handled by release scripts
+set(KF_VERSION "5.103.0") # handled by release scripts
+set(KF_DEP_VERSION "5.103.0") # handled by release scripts
 project(KDeclarative VERSION ${KF_VERSION})
 
 # Dependencies
 include(FeatureSummary)
-find_package(ECM 5.90.0  NO_MODULE)
+find_package(ECM 5.103.0  NO_MODULE)
 set_package_properties(ECM PROPERTIES TYPE REQUIRED DESCRIPTION "Extra CMake Modules." URL "https://commits.kde.org/extra-cmake-modules")
 feature_summary(WHAT REQUIRED_PACKAGES_NOT_FOUND FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
@@ -14,11 +14,13 @@ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
 set(REQUIRED_QT_VERSION 5.15.2)
 
-find_package(Qt5 ${REQUIRED_QT_VERSION} NO_MODULE REQUIRED Qml Quick Gui)
 include(KDEInstallDirs)
+find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} NO_MODULE REQUIRED Qml Quick Gui)
+
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
 include(KDEGitCommitHooks)
+include(ECMDeprecationSettings)
 
 find_package(KF5Config ${KF_DEP_VERSION} REQUIRED)
 find_package(KF5I18n ${KF_DEP_VERSION} REQUIRED)
@@ -26,15 +28,15 @@ find_package(KF5IconThemes ${KF_DEP_VERSION} REQUIRED)
 find_package(KF5KIO ${KF_DEP_VERSION} REQUIRED)
 find_package(KF5WidgetsAddons ${KF_DEP_VERSION} REQUIRED)
 find_package(KF5WindowSystem ${KF_DEP_VERSION} REQUIRED)
-find_package(KF5GlobalAccel ${KF_DEP_VERSION} REQUIRED)
 find_package(KF5GuiAddons ${KF_DEP_VERSION} REQUIRED)
 find_package(KF5Package ${KF_DEP_VERSION} REQUIRED)
 find_package(KF5Notifications ${KF_DEP_VERSION} REQUIRED)
 
-#########################################################################
 
-add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f02)
-add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055100)
+if(NOT WIN32)
+    find_package(KF5GlobalAccel ${KF_DEP_VERSION} REQUIRED)
+endif()
+#########################################################################
 
 #add_definitions(-Wno-deprecated)
 
@@ -63,15 +65,21 @@ ecm_setup_version(
 
 # Subdirectories
 add_definitions(-DTRANSLATION_DOMAIN=\"kdeclarative5\")
+ecm_set_disabled_deprecation_versions(
+    QT 5.15.2
+    KF 5.95
+)
+
 ki18n_install(po)
 
-find_package(epoxy)
-set_package_properties(epoxy PROPERTIES DESCRIPTION "libepoxy"
-                       URL "https://github.com/anholt/libepoxy"
-                       TYPE OPTIONAL
-                       PURPOSE "OpenGL dispatch library"
-                      )
-
+if (QT_MAJOR_VERSION STREQUAL "5")
+    find_package(epoxy)
+    set_package_properties(epoxy PROPERTIES DESCRIPTION "libepoxy"
+        URL "https://github.com/anholt/libepoxy"
+        TYPE OPTIONAL
+        PURPOSE "OpenGL dispatch library"
+    )
+endif()
 set(HAVE_EPOXY 0)
 if(epoxy_FOUND)
     set(HAVE_EPOXY 1)
@@ -118,7 +126,7 @@ install(EXPORT
 
 install(FILES
   "${CMAKE_CURRENT_BINARY_DIR}/kdeclarative_version.h"
-  DESTINATION "${KDE_INSTALL_INCLUDEDIR_KF5}"
+  DESTINATION "${KDE_INSTALL_INCLUDEDIR_KF}/KDeclarative"
   COMPONENT Devel
 )
 
@@ -130,7 +138,7 @@ else()
   message("In order to build libkdeclarative you need KF5Config, KF5I18n, KF5IconThemes and KF5KIO")
 endif()
 
-if(KF5I18n_FOUND AND KF5WidgetsAddons_FOUND AND KF5WindowSystem_FOUND AND KF5GlobalAccel_FOUND AND KF5KIO_FOUND AND KF5GuiAddons_FOUND)
+if(KF5I18n_FOUND AND KF5WidgetsAddons_FOUND AND KF5WindowSystem_FOUND AND KF5KIO_FOUND AND KF5GuiAddons_FOUND)
   message("Dependencies for KQuickControls found: it will be built")
 else()
   message("In order to build KQuickControls you need KF5I18n, KF5WidgetsAddons, KF5WindowSystem, KF5GlobalAccel, KF5KIO and KF5GuiAddons")

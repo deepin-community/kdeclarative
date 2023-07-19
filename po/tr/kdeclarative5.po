@@ -17,32 +17,34 @@
 # Serdar SOYTETİR <tulliana@gmail.com>, 2010, 2012.
 # Volkan Gezer <volkangezer@gmail.com>, 2013, 2014.
 # Kaan Ozdincer <kaanozdincer@gmail.com>, 2014.
+# Emir SARI <emir_sari@icloud.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-12-18 00:40+0000\n"
-"PO-Revision-Date: 2015-05-19 10:02+0000\n"
-"Last-Translator: Necdet <necdetyucel@gmail.com>\n"
+"POT-Creation-Date: 2022-12-16 00:46+0000\n"
+"PO-Revision-Date: 2022-09-15 10:00+0300\n"
+"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 1.4\n"
+"X-Generator: Lokalize 22.08.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Serdar Soytetir, Görkem Çetin, H. İbrahim Güngör, Volkan Gezer"
+msgstr ""
+"Serdar Soytetir, Görkem Çetin, H. İbrahim Güngör, Volkan Gezer, Emir SARI"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 "tulliana@gmail.com, gorkem@kde.org, ibrahim@pardus.org.tr, volkangezer@gmail."
-"com"
+"com, emir_sari@icloud.com"
 
 #: kpackagelauncherqml/main.cpp:30
 #, kde-format
@@ -52,41 +54,76 @@ msgstr "KPackage QML uygulama kabuğu"
 #: kpackagelauncherqml/main.cpp:38
 #, kde-format
 msgid "The unique name of the application (mandatory)"
-msgstr "Uygulamanın benzersiz ismi (zorunlu)"
+msgstr "Uygulamanın benzersiz adı (zorunlu)"
 
 #: qmlcontrols/kcmcontrols/qml/ContextualHelpButton.qml:62
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Contextual Help"
-msgstr ""
+msgstr "Bağlamsal Yardımı Göster"
 
-#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:75
+#: qmlcontrols/kcmcontrols/qml/private/GridViewInternal.qml:79
+#, kde-format
+msgid "No items found"
+msgstr "Öge bulunamadı"
+
+#: qmlcontrols/kquickcontrols/ColorButton.qml:63
+#, kde-format
+msgctxt "@info:whatsthis for a button"
+msgid "Color button"
+msgstr "Renk düğmesi"
+
+#: qmlcontrols/kquickcontrols/ColorButton.qml:65
+#, kde-format
+msgctxt "@info:whatsthis for a button of current color code %1"
+msgid "Current color is %1. This button will open a color chooser dialog."
+msgstr "Geçerli renk %1. Bu düğme bir renk seçici açacak."
+
+#: qmlcontrols/kquickcontrols/ColorButton.qml:66
+#, kde-format
+msgctxt "@info:whatsthis for a button of current color code %1"
+msgid "Current color is %1."
+msgstr "Geçerli renk %1."
+
+#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:90
 #, kde-format
 msgctxt "What the user inputs now will be taken as the new shortcut"
 msgid "Input"
 msgstr "Girdi"
 
-#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:77
+#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:91
 #, kde-format
 msgctxt "No shortcut defined"
 msgid "None"
 msgstr "Hiçbiri"
 
-#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:92
+#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:102
 #, kde-format
 msgid ""
 "Click on the button, then enter the shortcut like you would in the program.\n"
 "Example for Ctrl+A: hold the Ctrl key and press A."
 msgstr ""
-"Düğmeye tıklayın, ardından kısayol tuşlarına basın.\n"
-"Ctrl+A örneği için: Ctrl tuşuna basılı tutun ve A tuşuna basın."
+"Düğmeye tıklayın, ardından kısayol düğmelerine basın.\n"
+"Ctrl+A örneği için: Ctrl düğmesine basılı tutun ve A düğmesine basın."
 
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:115
+#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:150
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Clear Key Sequence"
+msgstr "Düğme Sıralamasını Temizle"
+
+#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:166
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Cancel Key Sequence Recording"
+msgstr "Düğme Sıralaması Kaydını Temizle"
+
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:118
 #, kde-format
 msgid "Reserved Shortcut"
 msgstr "Ayrılmış Kısayol"
 
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:117
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:120
 #, kde-format
 msgid ""
 "The F12 key is reserved on Windows, so cannot be used for a global "
@@ -95,65 +132,57 @@ msgid ""
 msgstr ""
 "F12 kısayolu Windows üzerinde önceden atanmış olduğundan genel kısayol "
 "olarak kullanılamaz.\n"
-"Lütfen başka bir tuş seçin."
+"Lütfen başka bir düğme seçin."
 
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:142
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:144
 #, kde-format
 msgid "Global Shortcut Shadowing"
-msgstr ""
-
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:145
-#, fuzzy, kde-format
-#| msgid ""
-#| "The '%1' key combination is registered by application %2 for action %3:"
-msgid "The '%1' key combination is shadowed by following global actions:\n"
-msgstr "'%1' kısayolu %2 uygulaması tarafından %3 eylemi için kaydedildi:"
+msgstr "Global Kısayol Gölgeleme"
 
 #: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:147
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:153
-#, fuzzy, kde-format
-#| msgid "In context '%1' for action '%2'\n"
-msgid "Action '%1' in context '%2'\n"
-msgstr "'%2' eylemi için '%1' kısayol\n"
-
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:151
-#, fuzzy, kde-format
-#| msgid ""
-#| "The '%1' key combination is registered by application %2.\n"
-#| "%3"
-msgid "The '%1' key combination shadows following global actions:\n"
+#, kde-format
+msgid "The '%1' key combination is shadowed by following global actions:\n"
 msgstr ""
-"'%1' kısayolu %2 uygulaması tarafından kaydedildi.\n"
-"%3"
+"'%1' düğme kombinasyonu, aşağıdaki global eylemler tarafından gölgelendi:\n"
 
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:190
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:149
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:155
+#, kde-format
+msgid "Action '%1' in context '%2'\n"
+msgstr "'%2' bağlamında '%1' eylemi\n"
+
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:153
+#, kde-format
+msgid "The '%1' key combination shadows following global actions:\n"
+msgstr "'%1' düğme kombinasyonu, aşağıdaki global eylemleri gölgeliyor:\n"
+
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:193
 #, kde-format
 msgid "Conflict with Standard Application Shortcut"
 msgstr "Standart Uygulama Kısayolu ile Çakışma"
 
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:192
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:195
 #, kde-format
 msgid ""
 "The '%1' key combination is also used for the standard action \"%2\" that "
 "some applications use.\n"
 "Do you really want to use it as a global shortcut as well?"
 msgstr ""
-"'%1' tuş kombinasyonu zaten başka bir uygulamanın \"%2\" eylemine "
+"'%1' düğme kombinasyonu zaten başka bir uygulamanın \"%2\" eylemine "
 "ayrılmıştı.\n"
 "Bu kombinasyonu şu anki eylem için yeniden atamak ister misiniz?"
 
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:198
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:201
 #, kde-format
 msgid "Reassign"
 msgstr "Yeniden Ata"
 
-#: quickaddons/configmodule.cpp:187
-#, fuzzy, kde-format
-#| msgid "Invalid item."
+#: quickaddons/configmodule.cpp:189
+#, kde-format
 msgid "Invalid KPackage '%1'"
-msgstr "Geçersiz öge."
+msgstr "Geçersiz KPackage '%1'"
 
-#: quickaddons/configmodule.cpp:193
+#: quickaddons/configmodule.cpp:195
 #, kde-format
 msgid "No QML file provided"
-msgstr ""
+msgstr "QML dosyası sağlanmadı"

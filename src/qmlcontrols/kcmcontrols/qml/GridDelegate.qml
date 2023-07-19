@@ -8,7 +8,6 @@ import QtQuick 2.8
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 2.2 as QQC2
 import QtQuick.Templates 2.2 as T2
-import QtGraphicalEffects 1.0
 
 import org.kde.kirigami 2.12 as Kirigami
 
@@ -59,6 +58,7 @@ T2.ItemDelegate {
     hoverEnabled: !Kirigami.Settings.isMobile
 
     Keys.onEnterPressed: menu.trigger()
+    Keys.onMenuPressed: menu.trigger()
     Keys.onSpacePressed: menu.trigger()
 
     QQC2.Menu {
@@ -71,7 +71,7 @@ T2.ItemDelegate {
             }
         }
 
-        onClosed: view.forceActiveFocus()
+        onClosed: delegate.forceActiveFocus()
 
         Repeater {
             model: delegate.actions
@@ -157,15 +157,19 @@ T2.ItemDelegate {
                     model: delegate.actions
                     delegate: QQC2.Button {
                         icon.name: modelData.iconName
-                        activeFocusOnTab: false
-                        onClicked: modelData.trigger()
+                        text: modelData.text || modelData.tooltip
+                        display: QQC2.AbstractButton.IconOnly
+
                         enabled: modelData.enabled
                         visible: modelData.visible
-                        //NOTE: there aren't any global settings where to take "official" tooltip timeouts
-                        QQC2.ToolTip.delay: 1000
-                        QQC2.ToolTip.timeout: 5000
-                        QQC2.ToolTip.visible: (Kirigami.Settings.isMobile ? pressed : hovered) && modelData.tooltip.length > 0
-                        QQC2.ToolTip.text: modelData.tooltip
+
+                        activeFocusOnTab: false
+
+                        onClicked: modelData.trigger()
+
+                        QQC2.ToolTip {
+                            text: parent.text
+                        }
                     }
                 }
             }
@@ -221,6 +225,11 @@ T2.ItemDelegate {
 
     QQC2.ToolTip.delay: 1000
     QQC2.ToolTip.timeout: 5000
-    QQC2.ToolTip.visible: hovered && delegate.toolTip.length > 0
-    QQC2.ToolTip.text: toolTip
+    QQC2.ToolTip.visible: hovered && (delegate.toolTip.length > 0 || title.truncated || caption.truncated)
+    QQC2.ToolTip.text: {
+        if (delegate.toolTip.length > 0) {
+            return delegate.toolTip;
+        }
+        return `${title.truncated ? title.text : ""}${caption.truncated ? ("\n" + caption.text) : ""}`;
+    }
 }

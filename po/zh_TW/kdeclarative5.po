@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-12-18 00:40+0000\n"
+"POT-Creation-Date: 2022-12-16 00:46+0000\n"
 "PO-Revision-Date: 2020-01-09 18:07+0800\n"
 "Last-Translator: pan93412 <pan93412@gmail.com>\n"
 "Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
@@ -53,19 +53,42 @@ msgctxt "@action:button"
 msgid "Show Contextual Help"
 msgstr ""
 
-#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:75
+#: qmlcontrols/kcmcontrols/qml/private/GridViewInternal.qml:79
+#, kde-format
+msgid "No items found"
+msgstr ""
+
+#: qmlcontrols/kquickcontrols/ColorButton.qml:63
+#, kde-format
+msgctxt "@info:whatsthis for a button"
+msgid "Color button"
+msgstr ""
+
+#: qmlcontrols/kquickcontrols/ColorButton.qml:65
+#, kde-format
+msgctxt "@info:whatsthis for a button of current color code %1"
+msgid "Current color is %1. This button will open a color chooser dialog."
+msgstr ""
+
+#: qmlcontrols/kquickcontrols/ColorButton.qml:66
+#, kde-format
+msgctxt "@info:whatsthis for a button of current color code %1"
+msgid "Current color is %1."
+msgstr ""
+
+#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:90
 #, kde-format
 msgctxt "What the user inputs now will be taken as the new shortcut"
 msgid "Input"
 msgstr "輸入"
 
-#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:77
+#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:91
 #, kde-format
 msgctxt "No shortcut defined"
 msgid "None"
 msgstr "無"
 
-#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:92
+#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:102
 #, kde-format
 msgid ""
 "Click on the button, then enter the shortcut like you would in the program.\n"
@@ -74,12 +97,24 @@ msgstr ""
 "點擊此按鍵，並輸入您要在程式裡做的動作。\n"
 "例如 Ctrl+A：按住 Ctrl 鍵並按 A。"
 
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:115
+#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:150
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Clear Key Sequence"
+msgstr ""
+
+#: qmlcontrols/kquickcontrols/KeySequenceItem.qml:166
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Cancel Key Sequence Recording"
+msgstr ""
+
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:118
 #, kde-format
 msgid "Reserved Shortcut"
 msgstr "保留的捷徑"
 
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:117
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:120
 #, kde-format
 msgid ""
 "The F12 key is reserved on Windows, so cannot be used for a global "
@@ -89,33 +124,33 @@ msgstr ""
 "F12 鍵是 Windows 的保留鍵，無法做為全域捷徑。\n"
 "請另外選一個鍵。"
 
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:142
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:144
 #, kde-format
 msgid "Global Shortcut Shadowing"
 msgstr ""
 
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:145
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:147
 #, kde-format
 msgid "The '%1' key combination is shadowed by following global actions:\n"
 msgstr ""
 
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:147
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:153
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:149
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:155
 #, kde-format
 msgid "Action '%1' in context '%2'\n"
 msgstr ""
 
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:151
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:153
 #, kde-format
 msgid "The '%1' key combination shadows following global actions:\n"
 msgstr ""
 
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:190
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:193
 #, kde-format
 msgid "Conflict with Standard Application Shortcut"
 msgstr "與標準的應用程式快捷鍵定義衝突"
 
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:192
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:195
 #, kde-format
 msgid ""
 "The '%1' key combination is also used for the standard action \"%2\" that "
@@ -125,17 +160,23 @@ msgstr ""
 "%1 組合鍵已經用於許多應用程式會用到的標準動作「%2」了。您確定要使用它做為全域"
 "的快捷鍵嗎？"
 
-#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:198
+#: qmlcontrols/kquickcontrols/private/keysequencehelper.cpp:201
 #, kde-format
 msgid "Reassign"
 msgstr "重新指定"
 
-#: quickaddons/configmodule.cpp:187
+#: quickaddons/configmodule.cpp:189
 #, kde-format
 msgid "Invalid KPackage '%1'"
 msgstr "「%1」KPackage 無效"
 
-#: quickaddons/configmodule.cpp:193
+#: quickaddons/configmodule.cpp:195
 #, kde-format
 msgid "No QML file provided"
 msgstr "未提供 QML 檔案"
+
+#~ msgid "The key you just pressed is not supported by Qt."
+#~ msgstr "您剛才按的鍵並未被 Qt 所支援。"
+
+#~ msgid "Unsupported Key"
+#~ msgstr "不支援的按鍵。"
